@@ -25,7 +25,7 @@ import Logo from "./Logo.astro";
     <ul
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
-    <li class="hidden xl:block sm:hidden"><a href="#">Soporte</a></li>
+    <!--<li class="hidden xl:block sm:hidden"><a href="#">Soporte</a></li> -->
     <li class="hidden xl:block sm:hidden"><a href="#">Contacto</a></li>
     <li><a href="#">Menú</a></li>
     </ul>
@@ -68,13 +68,18 @@ import Logo from "./Logo.astro";
       threshold: 0.8, // visibility percentage
     };
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const { isIntersecting } = entry;
-        if (isIntersecting) {
-          const color = entry.target.getAttribute("data-header-color");
-          $header.style.color = color;
-        }
-      });
+  entries.forEach((entry) => {
+    const { isIntersecting } = entry;
+    if (isIntersecting) {
+      const color = entry.target.getAttribute("data-header-color");
+
+      if (color !== null) {
+        $header.style.color = color;
+      } else {
+        $header.style.color = "defaultColor";
+      }
+    }
+  });
     }, observerOptions);
     const $sections = document.querySelectorAll(".landing-section");
     $sections.forEach((section) => observer.observe(section));
