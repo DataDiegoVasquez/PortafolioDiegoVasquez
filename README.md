@@ -1,40 +1,69 @@
-# Astro Starter Kit: Basics
+<p align="center">
+  <p align="center">
+    <a href="https://portafolio-diego-vasquez.vercel.app/" target="_blank">
+      <img src="/public/icons/Logo.svg" alt="Logo Portafolio" height="72">
+    </a>
+  </p>
+  <p align="center">
+    Portafolio Diego Vasquez
+  </p>
+</p>
 
-```sh
-npm create astro@latest -- --template basics
-```
+# Portfolio Diego Vasquez
+This is a simple page built by means of Astro with the purpose of showing the knowledge, trajectory and experiences that I have had in the world of data.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Purpose:
+Created for work purposes.  This portfolio is based on the Astro web framework showing relevant aspects of my work cycle.
+This includes a set of frameworks/technologies used for Data processing consisting of:
+    Python, 
+    SQL, 
+    Databricks,
+    among others. 
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## General Approach:
+The website shows my professional profile and some of the projects I have done. Users of this site can access my contact. Then they can leave a message in case they want to communicate with me.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+    
+* **Technologies**
+    1. HTML5
+    2. Tailwind
+    3. TypeScript
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside this project, you will see the following folder and file structure:
 
 ```text
 /
 ├── public/
+│   ├── icons/
+│   │   └── icon.svg
+│   ├── images/
+│   │   └── Img.jpg
+│   |── Diego.jpg
+│   |── VideoInit.mp4
 │   └── favicon.svg
 ├── src/
 │   ├── components/
+│   │   |── Logo.astro
+│   │   |── Header.astro
+│   │   |── IndexSection.astro
+│   │   |── ProfileSection.astro
+│   │   |── ExperienceSection.astro
+│   │   |── ExperienceItem.astro
+│   │   |── LinkButton.astro
+│   │   |── ProjectsSection.astro
+│   │   |── AchivementsSection.astro
 │   │   └── Card.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
+|── README.md
+|── astro.config.mjs.json
+|── tailwind.config.mjs.json
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
@@ -44,11 +73,28 @@ All commands are run from the root of the project, from a terminal:
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+-------------------------------------------------------------------
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Portafolio Diego Vasquez
+Esta es una pagina sencilla construida por medio de Astro con la finalidad de mostrar los conocimientos, trayectoria y experiencias que he tenido en el mundo de os datos.
+
+### Propósito:
+Creado para fines laborales.  Este portafolio está basado en el framework web Astro mostrando aspectos relevantes dentro de mi ciclo laboral.
+
+Este incluye un conjunto de marcos/tecnologías utilizados para el tratamiento de Datos que consta de:
+
+    Python, 
+    SQL, 
+    Databricks,
+    Entre otros.
+
+## Enfoque General:
+
+El sitio web muestra mi perfil profesional y algunos de los proyectos que he realizado. Los usuarios pueden de este sitio pueden acceder a mi contacto. Luego pueden dejar algun mensaje en caso de querer comunicase conmigo.
+    
+* **Tecnologías**
+    1. HTML5
+    2. Tailwind
+    3. TypeScript
+
