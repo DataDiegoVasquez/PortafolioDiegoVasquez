@@ -1,0 +1,54 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  {
+    date: "Diciembre/2022 - Actualidad",
+    title: "Ingeniero de datos | DATALYTICS COLOMBIA S.A.S.",
+    description:
+      "Optimizacion, desarrollo y documentacion de procesos en Databricks para un Datawarehouese en Google Cloud Platform.",
+  },
+  {
+    date: "Noviembre 2021 – Septiembre 2022",
+    title: "Analista de datos Junior | LEGIS EDITORES S.A",
+    description:
+      "Apoyar los procesos de limpieza de datos, análisis de datos, visualización de datos por medio de la creación de ETL's en formato SQL y programación en Python para su almacenamiento en Google Cloud Platform.",
+    link: "#Certificado",
+  },
+  {
+    date: "Febrero 2021 – Octubre 2021",
+    title: "Arquitecto de datos Junior | NEXA BPO",
+    description:
+      "Diseño de estructuras y procesos eficientes para la gestión de datos, apoyando el desarrollo y asegurando la integridad y accesibilidad de la información.",
+  },
+  {
+    date: "Mayo 2020 – Octubre 2020",
+    title: "Prácticas de Ingeniería | PREVISORA SEGUROS S.A",
+    description:
+      "Extracción, procesamiento y agrupación de datos para la construcción periódica de informes gerenciales de los procesos en las actividades propias de la administración de la plataforma de Gestión Documental de la Compañía.",
+  },
+];
+---
+
+<section
+  class="landing-section [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)] h-screen w-screen text-center overflow-hidden relative"
+  data-header-color="white"
+>
+  <div class="z-30 relative h-full flex flex-col">
+    <header>
+      <h2 id="Experience" class="text-white text-3xl font-semibold mb-6 pt-40 flex flex-col gap-x-3 items-center font-medium">
+        Experiencia
+      </h2>
+      <div class="px-1 max-w-xl mx-auto text-left">
+        <ol class="relative border-s border-gray-100 ml-3">
+          {
+            EXPERIENCIE.map((experiencie) => (
+              <li class="mb-10 ms-4">
+                <ExperienceItem {...experiencie} />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </header>
+  </div>
+</section>
