@@ -1,63 +1,95 @@
+---
+import { PROJECTS } from "../data/projects.ts";
+---
+
 <section
-  class="landing-section bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] h-screen w-screen text-center overflow-hidden relative"
-  data-header-color="black"
+  class="landing-section bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,135,40,0.3),rgba(255,255,255,0))] min-h-screen w-full text-center overflow-hidden relative pb-24"
+  data-header-color="white"
 >
-  <div class="z-30 relative h-full flex flex-col">
-    <header>
-      <h2
-        id="Projects"
-        class="text-black text-3xl font-semibold mb-6 pt-40 flex flex-col gap-x-3 items-center font-medium"
-      >
-        Portafolio de Proyectos
+  <div class="z-30 relative h-full flex flex-col w-full max-w-screen-xl mx-auto px-4 md:px-8">
+    <header class="w-full">
+      <h2 id="Projects" class="text-white text-4xl font-bold mb-4 pt-32 flex flex-col gap-x-3 items-center">
+        Proyectos Destacados
       </h2>
+      
+      <div class="text-gray-400 text-sm mb-12 flex items-center justify-center gap-2">
+        <span>Desliza para explorar</span>
+        <svg class="w-4 h-4 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </div>
     </header>
 
-    <div
-      class="z-30 relative h-full flex flex-col max-w-screen-xl mx-auto md:w-5/6 lg:w-4/6"
-    >
-      <div
-        class="grid place-content-center md:grid-cols-2 lg:grid-cols-3 gap-3 mb-16 md:mx-0 mx-3"
-      >
-        <!-- Project Cards ... -->
-        <div class="bg-gris mb-3 rounded-lg">
-          <a target="_blank" href="#">
+    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 hide-scrollbar scroll-smooth">
+      
+      {PROJECTS.map((project) => (
+        <article class="snap-center shrink-0 w-[85vw] sm:w-[400px] lg:w-[450px] bg-gray-900/50 border border-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-gray-700 hover:-translate-y-2 group flex flex-col">
+          
+          <div class="overflow-hidden aspect-video relative">
             <img
-              class="rounded-t-lg w-full max-h-60 object-cover"
-              src="/images/Img.jpg"
-              alt="imagen de proyecto1"
-              loading="lazy" width="500" height="500"
-              decoding="async" data-nimg="1"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src={project.image}
+              alt={`Captura de pantalla del proyecto ${project.title}`}
+              loading="lazy"
             />
-          </a>
-          <div class="p-5">
-            <h5
-              class="mb-2 text-2xl text-center text-black font-bold tracking-tight"
-            >
-              Proyecto En Construccion
-            </h5>
-            <p class="mb-3 font-normal text-grisclaro2">
-              Iniciativa como primer proyecto ojala un tablero de Dash en Python
+          </div>
+          
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="mb-3 text-2xl font-bold tracking-tight text-white text-left">
+              {project.title}
+            </h3>
+            
+            <ul class="flex flex-wrap gap-2 mb-4">
+              {project.tech.map((t) => (
+                <li class="bg-white/10 text-gray-300 text-xs font-semibold px-2.5 py-1 rounded-md border border-white/10">
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <p class="mb-6 font-normal text-gray-400 text-left text-pretty flex-grow">
+              {project.description}
             </p>
-            <div class="flex gap-1 items-center justify-center">
-              <a
-                target="_blank"
-                href="#"
-                class="flex-1 flex items-center justify-center py-2.5 px-5 mr-2 mb-2 text-sm text-black font-medium bg-naranja rounded-full border transition duration-300 hover:bg-naranja700"
-              >
-                Sitio Web
-              </a>
-              <a
-                target="_blank"
-                href="#"
-                class="flex-1 flex items-center justify-center py-2.5 px-5 mr-2 mb-2 text-sm text-black font-medium focus:outline-none bg-gris rounded-full border focus:z-10 focus:ring-4 focus:ring-gray-200 transition duration-300 hover:bg-grisclaro"
-              >
-                Github
-              </a>
+            
+            <div class="flex gap-3 items-center mt-auto">
+              {project.github && (
+                <a target="_blank" rel="noopener noreferrer" href={project.github} class="inline-flex items-center justify-center py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-lg border border-gray-700 hover:bg-gray-700 transition duration-300">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                  Código
+                </a>
+              )}
+
+              {project.website && (
+                <a target="_blank" rel="noopener noreferrer" href={project.website} class="inline-flex items-center justify-center py-2 px-4 text-sm font-medium text-black bg-white rounded-lg hover:bg-gray-200 transition duration-300">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  Sitio Web
+                </a>
+              )}
             </div>
           </div>
-        </div>
-        <!-- Add more project cards if needed -->
-      </div>
+        </article>
+      ))}
+
     </div>
   </div>
 </section>
+
+<style>
+  /* Ocultar barra de desplazamiento visualmente, pero mantener la funcionalidad */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Animación personalizada para la flechita de "Desliza" */
+  @keyframes bounce-x {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(25%); }
+  }
+  .animate-bounce-x {
+    animation: bounce-x 1s infinite;
+  }
+</style>

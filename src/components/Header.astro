@@ -64,8 +64,8 @@ import Logo from "./Logo.astro";
     const $header = document.querySelector("#landing-header") as HTMLElement;
     const observerOptions = {
       root: null,
-      rootMargin: "0px", // Cuando aparece el element
-      threshold: 0.8, // visibility percentage
+      rootMargin: '-80px 0px -80px 0px', // Cuando aparece el element
+      threshold: 0.05, // visibility percentage
     };
     const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
