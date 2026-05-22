@@ -1,5 +1,4 @@
 ---
-// En la parte superior de ProfileSection.astro
 const TECHNOLOGIES = [
   { name: "GCP", icon: "/icons/GCP.svg", alt: "Logo Google Cloud Platform" },
   { name: "Azure", icon: "/icons/Azure.svg", alt: "Logo Azure" },
@@ -11,125 +10,79 @@ const TECHNOLOGIES = [
 ---
 
 <section
-  class="landing-section h-screen w-screen overflow-hidden relative"
+  class="landing-section min-h-screen w-full overflow-x-hidden relative flex flex-col justify-center bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
   data-header-color="black"
 >
   <div
-    class="absolute inset-0 z-[-2] h-screen w-screen bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
-  >
-    <div
-      class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#e77d22,transparent)]"
-    >
-    </div>
-  </div>
-  <div
-    class="z-30 relative h-full w-full flex flex-col items-center justify-center py-44"
-  >
-    <header class="text-center">
+    class="absolute bottom-0 z-0 h-full w-full bg-[radial-gradient(circle_800px_at_100%_80%,#e77d22,transparent)] pointer-events-none"
+  ></div>
+
+  <div class="z-30 relative h-full w-full flex flex-col items-center justify-center py-32 px-6">
+    
+    <header class="text-center mb-10 md:mb-16">
       <h2
         id="Profile"
-        class="text-black text-5xl font-bold flex justify-center flex-row gap-x-4 pb-10"
+        class="text-black text-3xl md:text-5xl font-bold flex justify-center flex-row gap-x-4"
       >
         Hola, Soy Diego Vasquez
       </h2>
     </header>
 
     <div
-      class="flex flex-row justify-center items-start gap-x-16 max-w-2xl mx-auto"
+      class="flex flex-col md:flex-row justify-center items-center md:items-start gap-y-12 md:gap-x-16 max-w-5xl mx-auto w-full"
     >
-      <!-- Left Container with Text and List -->
-      <div
-        class="text-black text-xl opacity-80 text-justify text-align-last-auto text-wrap"
-      >
-        <p>
-          + de 6 años de Experiencia en lenguajes de programacion como <strong
-            >Python</strong
-          >
-          y <strong>SQL</strong>, conocimiento robusto de bases de datos
-          relacionales y no relacionales, familiaridad con tecnologías en la
-          nube para el procesamiento de datos en tiempo real.
+      
+      <div class="flex-1 text-black text-lg md:text-xl opacity-80 text-center md:text-justify max-w-xl">
+        <p class="mb-4 text-pretty">
+          + de 6 años de Experiencia en lenguajes de programación como <strong>Python</strong> y <strong>SQL</strong>, conocimiento robusto de bases de datos relacionales y no relacionales, familiaridad con tecnologías en la nube para el procesamiento de datos en tiempo real.
         </p>
-        <p>
-          Amplio conocimiento en manejo de herramientas ETL, modelado de datos y
-          diseño de esquemas, con conocimiento de Ciencia de Datos,
-          instrucciones de procesamiento, libros de códigos y datos procesados.
+        <p class="mb-8 text-pretty">
+          Amplio conocimiento en manejo de herramientas ETL, modelado de datos y diseño de esquemas, con conocimiento de Ciencia de Datos, instrucciones de procesamiento, libros de códigos y datos procesados.
         </p>
-        <ul class="list-inline social-buttons flex">
-          <li class="list-inline-item mr-4">
-            <a
-              target="_blank"
-              href="https://twitter.com/"
-              aria-label="Visitar el perfil de Instagram de Diego Vasquez"
-            >
-              <img
-                class="w-6 h-6"
-                title="Instagram"
-                src="/icons/instagram_black.png"
-                alt="Logo de Instagram"
-              />
+        
+        <ul class="flex flex-wrap items-center justify-center md:justify-start gap-6 mb-8">
+          <li>
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
+              <img class="w-8 h-8" title="Twitter" src="/icons/instagram_black.png" alt="Twitter" />
             </a>
           </li>
-          <li class="list-inline-item mr-4">
-            <a
-              target="_blank"
-              href="https://github.com/DataDiegoVasquez"
-              aria-label="Visitar el perfil de GitHub de Diego Vasquez"
-            >
-              <img
-                class="w-6 h-6"
-                title="GitHub"
-                src="/icons/github_black.png"
-                alt="Logo de GitHub"
-              />
+          <li>
+            <a href="https://github.com/DataDiegoVasquez" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
+              <img class="w-8 h-8" title="GitHub" src="/icons/github_black.png" alt="GitHub" />
             </a>
           </li>
-          <li class="list-inline-item mr-4">
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/diegofedericovasquezromero"
-              aria-label="Visitar el perfil de LinkedIn de Diego Vasquez"
-            >
-              <img
-                class="w-6 h-6"
-                title="LinkedIn"
-                src="/icons/linkedin_black.png"
-                alt="Logo de LinkedIn"
-              />
-            </a>
-          </li>
-          <li class="icon-container">
-            <a href="#">
-              <img
-                class="w-6 h-6"
-                title="Chart Line"
-                src="/icons/chart_black.png"
-                alt="Logo de Chart Line"
-              />
+          <li>
+            <a href="https://www.linkedin.com/in/diegofedericovasquezromero/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
+              <img class="w-8 h-8" title="LinkedIn" src="/icons/linkedin_black.png" alt="LinkedIn" />
             </a>
           </li>
         </ul>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="mailto:diegovasquez0197@gmail.com" class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-white transition-all bg-gray-900 rounded-full hover:bg-gray-800 hover:-translate-y-1">
+            Hablemos
+          </a>
+          <a href="https://drive.google.com/file/d/1feg2D8MQ-w8qgVlF8g5zb_ZcFKYHIO0c/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-gray-900 transition-all border-2 border-gray-900 rounded-full hover:bg-gray-100 hover:-translate-y-1">
+            Descargar CV
+          </a>
+        </div>
       </div>
-      <!-- Right Container for Technologies -->
-      <div class="flex flex-col items-center text-center">
-        <h3 class="text-4xl font-semibold">Tecnologias</h3>
-        <ul class="grid grid-cols-1 gap-10 sm:grid-cols-2 my-14">
-          {
-            TECHNOLOGIES.map((tech) => (
-              <li class="flex items-center justify-center">
-                <p class="flex items-center gap-2 dark:text-gray-400 text-gray-800 text-xl font-medium hover:text-blue-500 transition-colors">
-                  {tech.name}
-                  <img
-                    class="w-6 h-6"
-                    title={tech.name}
-                    src={tech.icon}
-                    alt={tech.alt}
-                  />
-                </p>
-              </li>
-            ))
-          }
+
+      <div class="flex-1 flex flex-col items-center text-center w-full">
+        <h3 class="text-3xl font-semibold mb-8 text-black">Tecnologías</h3>
+        
+        <ul class="grid grid-cols-2 gap-x-8 gap-y-10 w-full max-w-sm mx-auto">
+          {TECHNOLOGIES.map((tech) => (
+            <li class="flex items-center justify-center">
+              <p class="flex items-center gap-3 text-gray-800 text-lg md:text-xl font-medium hover:text-blue-600 transition-colors cursor-default">
+                <img class="w-6 h-6 object-contain" title={tech.name} src={tech.icon} alt={tech.alt} />
+                {tech.name}
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
+      
     </div>
   </div>
 </section>
