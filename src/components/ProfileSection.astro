@@ -1,9 +1,52 @@
 ---
+const lang = Astro.currentLocale || "es";
+
+const CONTENT = {
+  es: {
+    title: "Hola, Soy Diego Vasquez",
+    p1: "+ de 6 años de Experiencia en lenguajes de programación como <strong>Python</strong> y <strong>SQL</strong>, conocimiento robusto de bases de datos relacionales y no relacionales, familiaridad con tecnologías en la nube para el procesamiento de datos en tiempo real.",
+    p2: "Amplio conocimiento en manejo de herramientas ETL, modelado de datos y diseño de esquemas, con conocimiento de Ciencia de Datos, instrucciones de procesamiento, libros de códigos y datos procesados.",
+    techTitle: "Tecnologías",
+    btnTalk: "Hablemos",
+    btnCv: "Descargar CV",
+    cvUrl:
+      "https://drive.google.com/file/d/1feg2D8MQ-w8qgVlF8g5zb_ZcFKYHIO0c/view?usp=sharing",
+  },
+  en: {
+    title: "Hello, I'm Diego Vasquez",
+    p1: "+ of 6 years of Experience in programming languages such as <strong>Python</strong> and <strong>SQL</strong>, robust knowledge of relational and non-relational databases, familiarity with cloud technologies for real-time data processing.",
+    p2: "Extensive knowledge in handling ETL tools, data modeling, and schema design, with knowledge of Data Science, processing instructions, codebooks, and processed data.",
+    techTitle: "Technologies",
+    btnTalk: "Let's talk",
+    btnCv: "Download CV",
+    cvUrl:
+      "https://drive.google.com/file/d/1feg2D8MQ-w8qgVlF8g5zb_ZcFKYHIO0c/view?usp=sharing",
+  },
+};
+// Seleccionamos los textos según el idioma actual
+const t = CONTENT[lang as keyof typeof CONTENT];
+
+// Listado de tecnologías (las mismas para ambos idiomas, pero con textos alt traducidos si aplica)
 const TECHNOLOGIES = [
-  { name: "GCP", icon: "/icons/GCP.svg", alt: "Logo Google Cloud Platform" },
-  { name: "Azure", icon: "/icons/Azure.svg", alt: "Logo Azure" },
+  {
+    name: "GCP",
+    icon: "/icons/GCP.svg",
+    alt:
+      lang === "en"
+        ? "Google Cloud Platform Logo"
+        : "Logo Google Cloud Platform",
+  },
+  {
+    name: "Azure",
+    icon: "/icons/Azure.svg",
+    alt: lang === "en" ? "Azure Logo" : "Logo Azure",
+  },
   { name: "Git - Github", icon: "/icons/git.svg", alt: "Logo GIT" },
-  { name: "BD", icon: "/icons/Database.svg", alt: "Logo databases" },
+  {
+    name: "BD",
+    icon: "/icons/Database.svg",
+    alt: lang === "en" ? "Databases Logo" : "Logo databases",
+  },
   { name: "Python", icon: "/icons/Python.svg", alt: "Logo Python" },
   { name: "Databricks", icon: "/icons/Databricks.svg", alt: "Logo Databricks" },
 ];
@@ -15,74 +58,116 @@ const TECHNOLOGIES = [
 >
   <div
     class="absolute bottom-0 z-0 h-full w-full bg-[radial-gradient(circle_800px_at_100%_80%,#e77d22,transparent)] pointer-events-none"
-  ></div>
-
-  <div class="z-30 relative h-full w-full flex flex-col items-center justify-center py-32 px-6">
-    
+  >
+  </div>
+  <div
+    class="z-30 relative h-full w-full flex flex-col items-center justify-center py-32 px-6"
+  >
     <header class="text-center mb-10 md:mb-16">
       <h2
         id="Profile"
         class="text-black text-3xl md:text-5xl font-bold flex justify-center flex-row gap-x-4"
       >
-        Hola, Soy Diego Vasquez
+        {t.title}
       </h2>
     </header>
 
     <div
       class="flex flex-col md:flex-row justify-center items-center md:items-start gap-y-12 md:gap-x-16 max-w-5xl mx-auto w-full"
     >
-      
-      <div class="flex-1 text-black text-lg md:text-xl opacity-80 text-center md:text-justify max-w-xl">
-        <p class="mb-4 text-pretty">
-          + de 6 años de Experiencia en lenguajes de programación como <strong>Python</strong> y <strong>SQL</strong>, conocimiento robusto de bases de datos relacionales y no relacionales, familiaridad con tecnologías en la nube para el procesamiento de datos en tiempo real.
-        </p>
-        <p class="mb-8 text-pretty">
-          Amplio conocimiento en manejo de herramientas ETL, modelado de datos y diseño de esquemas, con conocimiento de Ciencia de Datos, instrucciones de procesamiento, libros de códigos y datos procesados.
-        </p>
-        
-        <ul class="flex flex-wrap items-center justify-center md:justify-start gap-6 mb-8">
+      <div
+        class="flex-1 text-black text-lg md:text-xl opacity-80 text-center md:text-justify max-w-xl"
+      >
+        <p class="mb-4 text-pretty" set:html={t.p1} />
+        <p class="mb-8 text-pretty" set:html={t.p2} />
+
+        <ul
+          class="flex flex-wrap items-center justify-center md:justify-start gap-6 mb-8"
+        >
           <li>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
-              <img class="w-8 h-8" title="Twitter" src="/icons/instagram_black.png" alt="Twitter" />
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:scale-110 transition-transform inline-block"
+              aria-label="Twitter"
+            >
+              <img
+                class="w-8 h-8"
+                src="/icons/instagram_black.png"
+                alt="Twitter"
+              />
             </a>
           </li>
           <li>
-            <a href="https://github.com/DataDiegoVasquez" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
-              <img class="w-8 h-8" title="GitHub" src="/icons/github_black.png" alt="GitHub" />
+            <a
+              href="https://github.com/DataDiegoVasquez"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:scale-110 transition-transform inline-block"
+              aria-label="GitHub"
+            >
+              <img class="w-8 h-8" src="/icons/github_black.png" alt="GitHub" />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/diegofedericovasquezromero/" target="_blank" rel="noopener noreferrer" class="hover:scale-110 transition-transform inline-block">
-              <img class="w-8 h-8" title="LinkedIn" src="/icons/linkedin_black.png" alt="LinkedIn" />
+            <a
+              href="https://www.linkedin.com/in/diegofedericovasquezromero/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:scale-110 transition-transform inline-block"
+              aria-label="LinkedIn"
+            >
+              <img
+                class="w-8 h-8"
+                src="/icons/linkedin_black.png"
+                alt="LinkedIn"
+              />
             </a>
           </li>
         </ul>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <a href="mailto:diegovasquez0197@gmail.com" class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-white transition-all bg-gray-900 rounded-full hover:bg-gray-800 hover:-translate-y-1">
-            Hablemos
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+        >
+          <a
+            href="mailto:diegovasquez0197@gmail.com"
+            class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-white transition-all bg-gray-900 rounded-full hover:bg-gray-800 hover:-translate-y-1"
+          >
+            {t.btnTalk}
           </a>
-          <a href="https://drive.google.com/file/d/1feg2D8MQ-w8qgVlF8g5zb_ZcFKYHIO0c/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-gray-900 transition-all border-2 border-gray-900 rounded-full hover:bg-gray-100 hover:-translate-y-1">
-            Descargar CV
+          <a
+            href={t.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-6 py-3 text-sm md:text-base font-medium text-gray-900 transition-all border-2 border-gray-900 rounded-full hover:bg-gray-100 hover:-translate-y-1"
+          >
+            {t.btnCv}
           </a>
         </div>
       </div>
 
       <div class="flex-1 flex flex-col items-center text-center w-full">
-        <h3 class="text-3xl font-semibold mb-8 text-black">Tecnologías</h3>
-        
+        <h3 class="text-3xl font-semibold mb-8 text-black">{t.techTitle}</h3>
+
         <ul class="grid grid-cols-2 gap-x-8 gap-y-10 w-full max-w-sm mx-auto">
-          {TECHNOLOGIES.map((tech) => (
-            <li class="flex items-center justify-center">
-              <p class="flex items-center gap-3 text-gray-800 text-lg md:text-xl font-medium hover:text-blue-600 transition-colors cursor-default">
-                <img class="w-6 h-6 object-contain" title={tech.name} src={tech.icon} alt={tech.alt} />
-                {tech.name}
-              </p>
-            </li>
-          ))}
+          {
+            TECHNOLOGIES.map((tech) => (
+              <li class="flex items-center justify-center">
+                <p class="flex items-center gap-3 text-gray-800 text-lg md:text-xl font-medium hover:text-blue-600 transition-colors cursor-default">
+                  <img
+                    class="w-6 h-6 object-contain"
+                    title={tech.name}
+                    src={tech.icon}
+                    alt={tech.alt}
+                  />
+                  {tech.name}
+                </p>
+              </li>
+            ))
+          }
         </ul>
       </div>
-      
     </div>
   </div>
 </section>

@@ -1,6 +1,9 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
-import { EXPERIENCIE } from "../data/experience"; // Importamos los datos limpios
+import { EXPERIENCE } from "../data/experience";
+const lang = Astro.currentLocale || "es";
+const currentExperience = EXPERIENCE[lang as keyof typeof EXPERIENCE];
+const sectionTitle = lang === "en" ? "Work Experience" : "Experiencia Laboral";
 ---
 
 <section
@@ -9,17 +12,20 @@ import { EXPERIENCIE } from "../data/experience"; // Importamos los datos limpio
 >
   <div class="z-30 relative h-full flex flex-col">
     <header>
-      <h2 id="Experience" class="text-white text-4xl font-bold mb-12 pt-32 flex flex-col gap-x-3 items-center">
-        Experiencia Laboral
+      <h2
+        id="Experience"
+        class="text-white text-4xl font-bold mb-12 pt-32 flex flex-col gap-x-3 items-center"
+      >
+        {sectionTitle}
       </h2>
     </header>
 
     <div class="px-4 max-w-3xl mx-auto text-left w-full">
       <ol class="relative border-s border-gray-500/50 ml-3">
         {
-          EXPERIENCIE.map((experiencie) => (
+          currentExperience.map((experience) => (
             <li class="mb-10 ms-6">
-              <ExperienceItem {...experiencie} />
+              <ExperienceItem {...experience} lang={lang}/>
             </li>
           ))
         }

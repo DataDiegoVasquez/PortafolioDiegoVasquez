@@ -1,21 +1,44 @@
 ---
 import { ACHIEVEMENTS } from "../data/achievements.ts";
-const currentYear = new Date().getFullYear(); // Obtenemos el año actual dinámicamente (2026)
----
+const currentYear = new Date().getFullYear();
+const lang = Astro.currentLocale || 'es';
 
+const currentAchievements = ACHIEVEMENTS[lang as keyof typeof ACHIEVEMENTS];
+
+const CONTENT = {
+  es: {
+    title: "Logros y Certificaciones",
+    btnCredential: "Ver Credencial",
+    badgeAcademic: "Título Académico",
+    navHome: "Inicio",
+    navProfile: "Perfil",
+    navPortfolio: "Portafolio"
+  },
+  en: {
+    title: "Achievements & Certifications",
+    btnCredential: "View Credential",
+    badgeAcademic: "Academic Degree",
+    navHome: "Home",
+    navProfile: "Profile",
+    navPortfolio: "Portfolio"
+  }
+};
+
+const t = CONTENT[lang as keyof typeof CONTENT];
+---
 <section
   class="landing-section bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] min-h-screen w-full text-center overflow-x-hidden relative flex flex-col"
   data-header-color="white"
 >
-  <div id="Achievements" class="z-30 relative flex-grow flex flex-col max-w-screen-xl mx-auto w-full px-4 md:px-8 pb-20">
+  <div class="z-30 relative flex-grow flex flex-col max-w-screen-xl mx-auto w-full px-4 md:px-8 pb-20">
     <header>
-      <h2 class="text-white pt-32 mb-12 text-4xl font-bold flex flex-col items-center">
-        Logros y Certificaciones
+      <h2 id="Achievements" class="scroll-mt-28 text-white pt-32 mb-12 text-4xl font-bold flex flex-col items-center">
+        {t.title}
       </h2>
     </header>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-      {ACHIEVEMENTS.map((ach) => (
+      {currentAchievements.map((ach) => (
         <article class="bg-white/5 border border-white/10 rounded-xl p-6 flex flex-col text-left hover:bg-white/10 transition-colors duration-300">
           <div class="flex justify-between items-start mb-4">
             <span class="text-blue-400 font-bold text-xs tracking-wider uppercase">{ach.entity}</span>
@@ -29,10 +52,10 @@ const currentYear = new Date().getFullYear(); // Obtenemos el año actual dinám
           {ach.link ? (
             <a href={ach.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors w-fit">
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-              Ver Credencial
+              {t.btnCredential}
             </a>
           ) : (
-            <span class="text-gray-500 text-sm italic">Título Académico</span>
+            <span class="text-gray-500 text-sm italic">{t.badgeAcademic}</span>
           )}
         </article>
       ))}
@@ -43,14 +66,14 @@ const currentYear = new Date().getFullYear(); // Obtenemos el año actual dinám
     <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
       
       <ul class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-400">
-        <li><a href="#Index" class="hover:text-white transition-colors">Inicio</a></li>
-        <li><a href="#Profile" class="hover:text-white transition-colors">Perfil</a></li>
-        <li><a href="#Projects" class="hover:text-white transition-colors">Portafolio</a></li>
+        <li><a href="#Index" class="hover:text-white transition-colors">{t.navHome}</a></li>
+        <li><a href="#Profile" class="hover:text-white transition-colors">{t.navProfile}</a></li>
+        <li><a href="#Projects" class="hover:text-white transition-colors">{t.navPortfolio}</a></li>
       </ul>
 
       <ul class="flex items-center gap-6">
         <li>
-          <a href="mailto:diegovasquez0197@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Enviar correo">
+          <a href="mailto:diegovasquez0197@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Email">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           </a>
         </li>

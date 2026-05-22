@@ -4,10 +4,12 @@ interface Props {
   description: string;
   link?: string;
   date: string;
-  tech?: string[]; // Añadimos la propiedad de tecnologías como un arreglo opcional
+  tech?: string[];
+  lang?: string;
 }
 
-const { title, description, link, date, tech } = Astro.props;
+const { title, description, link, date, tech, lang = 'es' } = Astro.props;
+const buttonText = lang === 'en' ? 'Employment Verification ...' : 'Certificado Laboral ...';
 
 // Pequeña lógica para saber si es el trabajo actual y darle el color/animación especial
 const isCurrentJob = date.toLowerCase().includes("actualidad");
@@ -33,7 +35,7 @@ const isCurrentJob = date.toLowerCase().includes("actualidad");
 
   {link && (
     <a href={link} class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 hover:text-white transition-colors focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-700">
-      Certificación Laboral...
+      {buttonText}
       <svg class="w-3 h-3 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
       </svg>
