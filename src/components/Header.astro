@@ -74,11 +74,11 @@ const navItems = isEnglish ? [
         const color = entry.target.getAttribute("data-header-color");
         
         if (color === "white") {
-          header.classList.add("text-white");
-          header.classList.remove("text-black");
+          header?.classList.add("text-white");
+          header?.classList.remove("text-black");
         } else {
-          header.classList.add("text-black");
-          header.classList.remove("text-white");
+          header?.classList.add("text-black");
+          header?.classList.remove("text-white");
         }
       }
     });
