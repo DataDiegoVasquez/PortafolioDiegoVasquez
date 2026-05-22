@@ -1,215 +1,101 @@
-<!--Iconos usando Font Awesome-->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
+---
+import { ACHIEVEMENTS } from "../data/achievements.ts";
+const currentYear = new Date().getFullYear();
+const lang = Astro.currentLocale || 'es';
 
+const currentAchievements = ACHIEVEMENTS[lang as keyof typeof ACHIEVEMENTS];
+
+const CONTENT = {
+  es: {
+    title: "Logros y Certificaciones",
+    btnCredential: "Ver Credencial",
+    badgeAcademic: "Título Académico",
+    navHome: "Inicio",
+    navProfile: "Perfil",
+    navPortfolio: "Portafolio"
+  },
+  en: {
+    title: "Achievements & Certifications",
+    btnCredential: "View Credential",
+    badgeAcademic: "Academic Degree",
+    navHome: "Home",
+    navProfile: "Profile",
+    navPortfolio: "Portfolio"
+  }
+};
+
+const t = CONTENT[lang as keyof typeof CONTENT];
+---
 <section
-  class="landing-section bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] h-screen w-screen text-center overflow-hidden relative"
+  class="landing-section bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))] min-h-screen w-full text-center overflow-x-hidden relative flex flex-col"
   data-header-color="white"
 >
-  <div id="Achievements" class="z-30 relative h-full flex flex-col">
+  <div class="z-30 relative flex-grow flex flex-col max-w-screen-xl mx-auto w-full px-4 md:px-8 pb-20">
     <header>
-      <h2 id="Achievements" class="text-white pt-40 text-[40px] font-medium">
-        Logros
+      <h2 id="Achievements" class="scroll-mt-32 text-white pt-32 mb-12 text-4xl font-bold flex flex-col items-center">
+        {t.title}
       </h2>
     </header>
-    <div class="mt-8 w-full max-w-[878px] mx-auto">
-      <table class="mt-8 w-full border-collapse">
-        <thead>
-          <tr>
-            <th class="border border-white text-white">Entidad</th>
-            <th class="border border-white text-white">Nombre</th>
-            <th class="border border-white text-white">Fecha</th>
-            <th class="border border-white text-white">Enlace</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Example row, add more rows as needed -->
-          <tr>
-            <td class="border border-white text-white">GOOGLE</td>
-            <td class="border border-white text-white"
-              >Google Cloud Certified - Associate Cloud Engineer</td
-            >
-            <td class="border border-white text-white">2023</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://google.accredible.com/dec669a1-1487-4de2-99f8-3c93420b6802"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white">MICROSOFT</td>
-            <td class="border border-white text-white"
-              >DP-900: Aspectos básicos de los datos en Microsoft Azure</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://www.credly.com/badges/32d2114f-281d-44b2-ada0-3a5742af8576/public_url"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white">MICROSOFT</td>
-            <td class="border border-white text-white"
-              >AZ-900: Aspectos básicos de Microsoft Azure</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://www.credly.com/badges/fa516347-88cf-4d15-89e7-3e6ec3149a86/public_url"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white">CORRELATION ONE</td>
-            <td class="border border-white text-white"
-              >Formación en Ciencia de Datos</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://udistritaleduco-my.sharepoint.com/:b:/g/personal/dfvasquezr_udistrital_edu_co/EYDQbgx1II5Dj2rrw3NV6rkBo5WEzuI8LcjcM1qzqzw7yw?e=EByVnp"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white"
-              >UNIVERSIDAD TECNOLÓGICA DE PEREIRA</td
-            >
-            <td class="border border-white text-white"
-              >Diplomado en Fundamentos de Programación en Python</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://udistritaleduco-my.sharepoint.com/:b:/g/personal/dfvasquezr_udistrital_edu_co/Efc5upq5NuRIhvVD3JqtlPMBP-3dYHvTbmiW_qLfBkLMnA?e=0dFFEF"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white"
-              >UNIVERSIDAD TECNOLÓGICA DE PEREIRA</td
-            >
-            <td class="border border-white text-white"
-              >Diplomado en Desarrollo de software</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://udistritaleduco-my.sharepoint.com/:b:/g/personal/dfvasquezr_udistrital_edu_co/EcquVTkFSclCvZjG7s6w9WoBVi_TVbOZVjne0U-IU5kR5Q?e=AmLbBE"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white"
-              >UNIVERSIDAD TECNOLÓGICA DE PEREIRA</td
-            >
-            <td class="border border-white text-white"
-              >Diplomado en Desarrollo de aplicaciones Web</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white">
-              <a
-                href="https://udistritaleduco-my.sharepoint.com/:b:/g/personal/dfvasquezr_udistrital_edu_co/EZnptxxPRCZLtXkNsjLjReABjNB27grPON0NJ6BPm2dUYA?e=jI6Tik"
-                target="_blank"
-              >
-                <i class="fa fa-link"></i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white"
-              >SERVICIO NACIONAL DE APRENDIZAJE</td
-            >
-            <td class="border border-white text-white"
-              >Tecnólogo en Negociación Internacional</td
-            >
-            <td class="border border-white text-white">2022</td>
-            <td class="border border-white text-white"> </td>
-          </tr>
-          <tr>
-            <td class="border border-white text-white"
-              >UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS</td
-            >
-            <td class="border border-white text-white">Ingeniero Industrial</td>
-            <td class="border border-white text-white">2020</td>
-            <td class="border border-white text-white"> </td>
-          </tr>
-          <!-- Add more rows as needed -->
-        </tbody>
-      </table>
-    </div>
-    <div id="Contact" class="flex flex-col flex-grow justify-end text-white">
-      <footer>
-        <div class="banner-wrapper flex flex-col">
-          <div class="icon-text flex flex-grow">
-            <div
-              class="icon-text-icon px-10 py-3 flex flex-grow [&>li>a]:inline-block z-10 justify-center"
-            >
-              <ul class="footer-nav">
-                <li><a href="#Index">Inicio</a></li>
-                <li><a href="#Profile">Perfil</a></li>
-                <li><a href="#Projects">Portafolio</a></li>
-                <!-- <li><a href="#services">Servicios</a></li>-->
-              </ul>
-            </div>
-            <div class="icon-text-text flex flex-grow">
-              <ul
-                class="social flex flex-grow items-center justify-center z-40 text-[60px] space-x-10 basis-0"
-              >
-                <li>
-                  <a href="mailto:diegovasquez0197@gmail.com" target="_blank">
-                    <i class="fa fa-envelope"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/DataDiegoVasquez" target="_blank">
-                    <i class="fa-brands fa-square-github"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/diegofedericovasquezromero/"
-                    target="_blank"
-                  >
-                    <i class="fa-brands fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      {currentAchievements.map((ach) => (
+        <article class="bg-white/5 border border-white/10 rounded-xl p-6 flex flex-col text-left hover:bg-white/10 transition-colors duration-300">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-blue-400 font-bold text-xs tracking-wider uppercase">{ach.entity}</span>
+            <span class="text-gray-400 text-xs bg-white/5 px-2.5 py-1 rounded-full border border-white/10">{ach.date}</span>
           </div>
-        </div>
-      </footer>
-      <footer
-        class="second-footer flex flex-col justify-center font-light text-xs"
-      >
-        <p class="copyright">
-          &copy;<a href="https://portafolio-diego-vasquez.vercel.app/" target="_blank">
-            [2023] VaData.com, All rights reserved. Powered by DiegoVasquez</a
-          >
-        </p>
-      </footer>
+          
+          <h3 class="text-white font-medium text-lg mb-6 flex-grow text-pretty">
+            {ach.name}
+          </h3>
+          
+          {ach.link ? (
+            <a href={ach.link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors w-fit">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              {t.btnCredential}
+            </a>
+          ) : (
+            <span class="text-gray-500 text-sm italic">{t.badgeAcademic}</span>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div id="Contact" class="w-full bg-black/50 border-t border-white/10 py-8 z-30 relative mt-auto">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <ul class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-400">
+        <li><a href="#Index" class="hover:text-white transition-colors">{t.navHome}</a></li>
+        <li><a href="#Profile" class="hover:text-white transition-colors">{t.navProfile}</a></li>
+        <li><a href="#Projects" class="hover:text-white transition-colors">{t.navPortfolio}</a></li>
+      </ul>
+
+      <ul class="flex items-center gap-6">
+        <li>
+          <a href="mailto:diegovasquez0197@gmail.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Email">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DataDiegoVasquez" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/diegofedericovasquezromero/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="text-center mt-6 text-xs text-gray-500 font-light">
+      <p class="copyright">
+        &copy; <a href="https://portafolio-diego-vasquez.vercel.app/" target="_blank" class="hover:text-gray-300 transition-colors">
+          [{currentYear}] VaData.com, All rights reserved. Powered by DiegoVasquez
+        </a>
+      </p>
     </div>
   </div>
 </section>
-
